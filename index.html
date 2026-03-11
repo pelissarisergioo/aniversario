@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Murilo vai ganhar presente?</title>
+
+<style>
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align:center;
+    background:#f5f5f5;
+}
+
+h1{
+    margin-top:40px;
+}
+
+table{
+    margin:30px auto;
+    border-collapse: collapse;
+    width:500px;
+    background:white;
+}
+
+th, td{
+    border:1px solid #ccc;
+    padding:10px;
+}
+
+th{
+    background:#eee;
+}
+
+.total{
+    font-size:20px;
+    margin-top:20px;
+}
+
+.resultado{
+    font-size:30px;
+    font-weight:bold;
+    margin-top:20px;
+}
+
+.verde{
+    color:green;
+}
+
+.vermelho{
+    color:red;
+}
+
+</style>
+
+</head>
+<body>
+
+<h1>🎂 O Murilo vai ganhar Presente de Aniversário?</h1>
+
+<table id="tabela">
+<thead>
+<tr>
+<th>Motivo</th>
+<th>Pontos</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>Fez a lição de casa</td>
+<td data-pontos="15">+15</td>
+</tr>
+
+<tr>
+<td>Ajudou em casa</td>
+<td data-pontos="10">+10</td>
+</tr>
+
+<tr>
+<td>Falou palavrão</td>
+<td data-pontos="-10">-10</td>
+</tr>
+
+<tr>
+<td>Brigou com alguém</td>
+<td data-pontos="-20">-20</td>
+</tr>
+
+<tr>
+<td>Reclamou</td>
+<td data-pontos="-20">-5</td>
+</tr>
+
+</tbody>
+</table>
+
+<div class="total">
+Total de Pontos: <span id="total">0</span>
+</div>
+
+<div id="resultado" class="resultado"></div>
+
+<script>
+
+function calcular(){
+
+    let total = 0;
+
+    document.querySelectorAll("[data-pontos]").forEach(el=>{
+        total += parseInt(el.dataset.pontos)
+    })
+
+    document.getElementById("total").innerText = total
+
+    let resultado = document.getElementById("resultado")
+
+    if(total >= 200){
+        resultado.innerHTML = "Resultado: SIM 🎉 <br> Vai ganhar presente!"
+        resultado.className = "resultado verde"
+    }else{
+        resultado.innerHTML = "Resultado: NÃO 😬 <br> Precisa melhorar..."
+        resultado.className = "resultado vermelho"
+    }
+
+}
+
+calcular()
+
+</script>
+
+</body>
+</html>
